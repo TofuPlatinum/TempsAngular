@@ -1,0 +1,16 @@
+<div class="container">
+    <div>
+      <h1>MENU</h1>
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Nouveau projet" #titreProjet>
+      <div class="input-group-addon" (click)="ajouterProjet(titreProjet)">
+          <i class="fa fa-plus-circle"></i>
+      </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let projet of projets">
+              {{ projet.titre }}
+        </li>
+    </ul>
+</div>
