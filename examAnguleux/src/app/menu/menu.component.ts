@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Projet } from '../model/projet';
-import { StockageLocalService } from '../stockage-local.service';
+import { StockageLocalService } from '../services/stockage-local.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -23,6 +23,8 @@ export class MenuComponent implements OnInit {
           id: 1, titre : "Tâches unique"
         }
       ]
+      this.stockageLocalService.stockerProjet(this.projets[0]);
+      this.stockageLocalService.stockerProjet(this.projets[1]);
     }
     this.idProjet = this.projets.length;
 
@@ -30,13 +32,18 @@ export class MenuComponent implements OnInit {
   }
 
   ajouterProjet(titreProjet){
-    let newProjet = {
-      id: 2,
-      titre: titreProjet.value
+    console.log(titreProjet.value.length);
+    if(titreProjet.value.length > 1){
+      let newProjet = {
+        id: this.idProjet,
+        titre: titreProjet.value
+      }
+      this.idProjet++;
+      this.projets.push(newProjet);
+      this.stockageLocalService.stockerProjet(newProjet);
+      titreProjet.value = '';
     }
-    this.projets.push(newProjet);
-    this.stockageLocalService.stockerProjet(newProjet);
-    titreProjet.value = '';
+
   }
 
 }

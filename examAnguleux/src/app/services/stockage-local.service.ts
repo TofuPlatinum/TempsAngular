@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Projet } from './model/projet';
+import { Projet } from '../model/projet';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +23,7 @@ export class StockageLocalService {
   }
   stockerProjet(projet:Projet){
     try{
+      this.projets = this.recupererProjets();
       this.projets.push(projet);
       localStorage.projets = JSON.stringify(this.projets);
     }catch(error){
