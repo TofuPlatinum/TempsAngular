@@ -5,11 +5,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProjetComponent } from './projet/projet.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { ProjetService } from './services/projet-service';
+import { ChronoTacheComponent } from './chrono-tache/chrono-tache.component';
 
 const appRoutes: Routes = [
   { path: 'projet/:id', component: ProjetComponent },
@@ -21,12 +21,12 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MenuComponent,
-    ProjetComponent
+    ProjetComponent,
+    ChronoTacheComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
 
   ],

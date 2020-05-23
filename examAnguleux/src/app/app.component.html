@@ -1,20 +1,2 @@
 
-<div class="container">
-    <div class="text-center">
-        <h1>Chrono</h1>
-        <hr>
-        <h1>
-            <span class="label label-primary">{{_timer.minutes}}</span> :
-            <span class="label label-primary">{{_timer.secondes}}</span>
-        </h1>
-        <br>
-        <p>
-            <button class="btn btn-danger btn-lg" *ngIf="_state.backward" (click)="backward()">Effacer</button>
-            <button class="btn btn-danger btn-lg" *ngIf="_state.stop" (click)="stop()">Arrêter</button>
-            <button class="btn btn-primary btn-lg" *ngIf="_state.play" (click)="play()">{{_btnPlay}}</button>
-        </p>
-    </div>
-</div>
-
-
 <router-outlet></router-outlet>
