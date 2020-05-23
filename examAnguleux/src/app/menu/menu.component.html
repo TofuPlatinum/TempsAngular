@@ -10,7 +10,7 @@
     </div>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let projet of projets">
-          <a routerLink="projet">{{ projet.titre }}</a>
+          <a routerLink="projet/{{projet.id}}">{{ projet.titre }}</a>
         </li>
     </ul>
 </div>
