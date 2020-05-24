@@ -21,7 +21,7 @@ export class ChronoTacheComponent implements OnInit {
 
   ngOnInit(): void {
     this.taches = this.stockageLocalService.recupererTaches();
-    this.idTache = this.taches.length;
+    this.idTache = this.taches.length-1;
     this.taches.forEach(element => {
       this.subsTemps.push(new Subscription);
     });
@@ -59,8 +59,12 @@ export class ChronoTacheComponent implements OnInit {
       let maintenant = new Date();
       tache.dates.push([this.dateActive[indice],maintenant]);
       this.dateActive[indice] = null;
+      this.stockageLocalService.updateTache(tache);
+      }
+
+
+
     }
-  }
 
   tempsDynamique(tache,i){
     return (this.compteur[i])?tache.temps+this.compteur[i]:tache.temps;

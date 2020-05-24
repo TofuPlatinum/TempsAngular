@@ -57,4 +57,14 @@ export class StockageLocalService {
     }
 
   }
+
+  updateTache(tache:Tache){
+    try{
+      localStorage.taches.removeItem(tache.id);
+      this.taches.push(tache);
+      localStorage.taches = JSON.stringify(this.taches);
+    }catch(error){
+      console.error("Impossible de persister dans localStorage", error);
+    }
+  }
 }

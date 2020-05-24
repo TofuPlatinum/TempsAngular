@@ -14,7 +14,7 @@ import { ChronoTacheComponent } from './chrono-tache/chrono-tache.component';
 const appRoutes: Routes = [
   { path: 'projet/:id', component: ProjetComponent },
   { path: 'menu', component: MenuComponent },
-  { path: '', component: MenuComponent }
+  { path: '', component: ChronoTacheComponent }
 ];
 
 @NgModule({
