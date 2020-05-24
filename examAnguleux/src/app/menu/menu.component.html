@@ -1,6 +1,7 @@
 <div class="container">
     <div>
       <h1>MENU</h1>
+      <h3>Temps total : {{ tempsTotalh }}heure {{tempsTotalmin}}minute et {{ tempsTotalsec }}seconde</h3>
     </div>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Nouveau projet" #titreProjet>
@@ -8,12 +9,18 @@
           <i class="fa fa-plus-circle"></i>
       </div>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let projet of projets">
-          <a routerLink="projet/{{projet.id}}">{{ projet.titre }}</a>
-          <div class="input-group-addon" (click)="supprimerProjet(projet.id)">
-              <i class="fa fa-trash"></i>
-          </div>
-        </li>
-    </ul>
+    <div class="container">
+      <ul class="list-group">
+            <li class="list-group-item" *ngFor="let projet of projets">
+              <div class="row">
+                <div class="col">
+                  <a routerLink="projet/{{projet.id}}">{{ projet.titre }}     </a>
+                </div>
+                <div class="col col-lg-1">
+                  <i class="fa fa-trash" (click)="supprimerProjet(projet.id)"></i>
+                </div>
+              </div>
+            </li>
+      </ul>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Projet } from '../model/projet';
+import { Tache } from '../model/tache';
 import { StockageLocalService } from '../services/stockage-local.service';
 @Component({
   selector: 'app-menu',
@@ -10,6 +11,12 @@ export class MenuComponent implements OnInit {
 
   projets : Projet[];
   idProjet : number;
+  taches : Tache[];
+  tempsTotalsec : number;
+  tempsTotalmin : number;
+  tempsTotalh : number;
+
+
   constructor( private stockageLocalService : StockageLocalService) { }
 
   ngOnInit(): void {
@@ -27,6 +34,16 @@ export class MenuComponent implements OnInit {
       this.stockageLocalService.stockerProjet(this.projets[1]);
     }
     this.idProjet = this.projets.length;
+    this.taches = this.stockageLocalService.recupererTaches();
+    let tempsTotal: number = 0;
+    for(var i=0; i <= this.taches.length-1 ; i++){
+      tempsTotal = tempsTotal + this.taches[i].temps;
+    }
+    this.tempsTotalh = tempsTotal/3600;
+    tempsTotal = tempsTotal%3600;
+    this.tempsTotalmin = tempsTotal / 60;
+    tempsTotal = tempsTotal%60;
+    this.tempsTotalsec = tempsTotal;
 
 
   }
