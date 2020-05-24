@@ -11,6 +11,9 @@
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let projet of projets">
           <a routerLink="projet/{{projet.id}}">{{ projet.titre }}</a>
+          <div class="input-group-addon" (click)="supprimerProjet(projet.id)">
+              <i class="fa fa-trash"></i>
+          </div>
         </li>
     </ul>
 </div>

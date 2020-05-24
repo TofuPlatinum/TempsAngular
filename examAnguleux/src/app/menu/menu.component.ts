@@ -46,4 +46,14 @@ export class MenuComponent implements OnInit {
 
   }
 
+  supprimerProjet(id :number){
+    for(var i=0; i <= this.projets.length-1 ; i++){
+        if(this.projets[i].id == id){
+          this.projets.splice(i,1);
+        }
+      }
+      this.stockageLocalService.supprimerProjet(id);
+
+    }
+
 }
