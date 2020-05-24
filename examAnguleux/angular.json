@@ -29,7 +29,6 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/jquery/dist/jquery.min.js",
               "src/styles.scss"
             ],
             "scripts": []
