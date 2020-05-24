@@ -60,16 +60,8 @@ export class ChronoTacheComponent implements OnInit {
       tache.dates.push([this.dateActive[indice],maintenant]);
       this.dateActive[indice] = null;
 
-
-      //supprime seulement sur le moment
-    /*for(var i=0; i <= this.taches.length-1 ; i++){
-        if(this.taches[i].id==tache.id){
-          this.taches.splice(i,1)
-        }
-        this.stockageLocalService.stockerTache(nouvelleTache);
-      }*/
-
-      //this.stockageLocalService.updateTache(tache); ne marche pas
+      this.stockageLocalService.supprimerTache(tache.id);
+      this.stockageLocalService.stockerTache(tache);
 
 
 

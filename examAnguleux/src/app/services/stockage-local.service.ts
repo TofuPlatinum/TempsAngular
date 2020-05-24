@@ -53,6 +53,7 @@ export class StockageLocalService {
   recupererTaches(){
     try{
       if(localStorage.taches != null){
+
         return JSON.parse(localStorage.taches);
       }else{
         return [];
@@ -67,6 +68,7 @@ export class StockageLocalService {
     try{
       this.taches = this.recupererTaches();
       this.taches.push(tache);
+      this.taches.sort((a,b)=> (a.id > b.id )? 1:-1);
       localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);
@@ -74,13 +76,18 @@ export class StockageLocalService {
 
   }
 
-  updateTache(tache:Tache){
+  supprimerTache(id: number){
     try{
-      localStorage.taches.removeItem(tache.id); //marche pas ?
-      this.taches.push(tache);
+      this.taches = this.recupererTaches();
+      for(var i=0; i <= this.taches.length-1 ; i++){
+          if(this.taches[i].id== id){
+            this.taches.splice(i,1);
+          }
+        }
       localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);
     }
+
   }
 }
