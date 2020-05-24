@@ -5,8 +5,9 @@
     </div>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Nouveau projet" #titreProjet>
+      <i class="fa fa-plus-circle"></i>
       <div class="input-group-addon" (click)="ajouterProjet(titreProjet)">
-          <i class="fa fa-plus-circle"></i>
+
       </div>
     </div>
     <div class="container">
@@ -14,10 +15,16 @@
             <li class="list-group-item" *ngFor="let projet of projets">
               <div class="row">
                 <div class="col">
-                  <a routerLink="projet/{{projet.id}}">{{ projet.titre }}     </a>
+                  <a routerLink="projet/{{projet.id}}">{{ projet.titre }}</a>
                 </div>
-                <div class="col col-lg-1">
-                  <i class="fa fa-trash" (click)="supprimerProjet(projet.id)"></i>
+                <div class="col col-lg-4">
+                  <i class="fa fa-trash col-lg-3" (click)="supprimerProjet(projet.id)"></i>
+                  <i class="fa fa-edit col-lg-3" (click)="editerTrue(projet.id)"></i>
+                  <div *ngIf="projet.isEdit">
+                    <input type="text"  class="form-control" placeholder="Nouveau titre" #titreProjetEdit>
+                    <i class="fa fa-check"  (click)="editerProjet(projet.id,titreProjetEdit)"></i>
+                  </div>
+
                 </div>
               </div>
             </li>

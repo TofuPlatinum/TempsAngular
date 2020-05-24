@@ -24,10 +24,10 @@ export class MenuComponent implements OnInit {
     if(this.projets.length == 0){
       this.projets = [
         {
-          id: 0, titre : "Toutes les tâches"
+          id: 0, titre : "Toutes les tâches", isEdit : false
         },
         {
-          id: 1, titre : "Tâches unique"
+          id: 1, titre : "Tâches unique", isEdit : false
         }
       ]
       this.stockageLocalService.stockerProjet(this.projets[0]);
@@ -39,9 +39,9 @@ export class MenuComponent implements OnInit {
     for(var i=0; i <= this.taches.length-1 ; i++){
       tempsTotal = tempsTotal + this.taches[i].temps;
     }
-    this.tempsTotalh = tempsTotal/3600;
+    this.tempsTotalh = Math.floor(tempsTotal/3600);
     tempsTotal = tempsTotal%3600;
-    this.tempsTotalmin = tempsTotal / 60;
+    this.tempsTotalmin = Math.floor(tempsTotal/60);
     tempsTotal = tempsTotal%60;
     this.tempsTotalsec = tempsTotal;
 
@@ -53,7 +53,8 @@ export class MenuComponent implements OnInit {
     if(titreProjet.value.length > 1){
       let newProjet = {
         id: this.idProjet,
-        titre: titreProjet.value
+        titre: titreProjet.value,
+        isEdit: false
       }
       this.idProjet++;
       this.projets.push(newProjet);
@@ -71,6 +72,28 @@ export class MenuComponent implements OnInit {
       }
       this.stockageLocalService.supprimerProjet(id);
 
-    }
+  }
+
+  editerTrue(id: number){
+    for(var i=0; i <= this.projets.length-1 ; i++){
+        if(this.projets[i].id == id){
+          this.projets[i].isEdit = !this.projets[i].isEdit;
+          break;
+        }
+      }
+  }
+  editerProjet(id: number,titreProjetEdit){
+    for(var i=0; i <= this.projets.length-1 ; i++){
+        if(this.projets[i].id == id){
+          this.projets[i].titre = titreProjetEdit.value;
+          this.projets[i].isEdit = false;
+          //this.stockageLocalService.stockerProjet(this.projet[i].);
+          break;
+        }
+      }
+
+      titreProjetEdit.value = '';
+  }
+
 
 }
