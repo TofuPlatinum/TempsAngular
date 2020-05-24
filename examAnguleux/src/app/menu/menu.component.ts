@@ -87,7 +87,8 @@ export class MenuComponent implements OnInit {
         if(this.projets[i].id == id){
           this.projets[i].titre = titreProjetEdit.value;
           this.projets[i].isEdit = false;
-          //this.stockageLocalService.stockerProjet(this.projet[i].);
+          this.stockageLocalService.supprimerProjet(id)
+          this.stockageLocalService.stockerProjet(this.projets[i]);
           break;
         }
       }

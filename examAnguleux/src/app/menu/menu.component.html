@@ -3,13 +3,17 @@
       <h1>MENU</h1>
       <h3>Temps total : {{ tempsTotalh }}heure {{tempsTotalmin}}minute et {{ tempsTotalsec }}seconde</h3>
     </div>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Nouveau projet" #titreProjet>
-      <i class="fa fa-plus-circle"></i>
-      <div class="input-group-addon" (click)="ajouterProjet(titreProjet)">
+    <div class="container">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Nouveau projet" #titreProjet>
 
+        <div class="input-group-append" (click)="ajouterProjet(titreProjet)">
+            <span class="input-group-text"><i class="fa fa-plus-circle"></i></span>
+        </div>
       </div>
     </div>
+    <br>
+
     <div class="container">
       <ul class="list-group">
             <li class="list-group-item" *ngFor="let projet of projets">
@@ -20,10 +24,14 @@
                 <div class="col col-lg-4">
                   <i class="fa fa-trash col-lg-3" (click)="supprimerProjet(projet.id)"></i>
                   <i class="fa fa-edit col-lg-3" (click)="editerTrue(projet.id)"></i>
-                  <div *ngIf="projet.isEdit">
+                  <span *ngIf="projet.isEdit" class="input-group">
                     <input type="text"  class="form-control" placeholder="Nouveau titre" #titreProjetEdit>
-                    <i class="fa fa-check"  (click)="editerProjet(projet.id,titreProjetEdit)"></i>
-                  </div>
+                    <div class="input-group-append" (click)="editerProjet(projet.id,titreProjetEdit)">
+                      <span class="input-group-text">
+                        <i class="fa fa-check"></i>
+                      </span>
+                    </div>
+                  </span>
 
                 </div>
               </div>
