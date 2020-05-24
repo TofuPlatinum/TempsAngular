@@ -36,7 +36,8 @@ export class ChronoTacheComponent implements OnInit {
       titre : titreTache.value,
       estDemarre : false,
       temps : 0,
-      dates: []
+      dates: [],
+      idProjet: 1
     }
 
     this.taches.push(nouvelleTache)

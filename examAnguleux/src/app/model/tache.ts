@@ -4,6 +4,7 @@ export class Tache {
   estDemarre: boolean;
   temps: number;
   dates : CoupleDates[];
+  idProjet:number;
 }
 
 type CoupleDates = [Date,Date];
