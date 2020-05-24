@@ -59,12 +59,22 @@ export class ChronoTacheComponent implements OnInit {
       let maintenant = new Date();
       tache.dates.push([this.dateActive[indice],maintenant]);
       this.dateActive[indice] = null;
-      this.stockageLocalService.updateTache(tache);
-      }
+
+
+      //supprime seulement sur le moment
+    /*for(var i=0; i <= this.taches.length-1 ; i++){
+        if(this.taches[i].id==tache.id){
+          this.taches.splice(i,1)
+        }
+        this.stockageLocalService.stockerTache(nouvelleTache);
+      }*/
+
+      //this.stockageLocalService.updateTache(tache); ne marche pas
 
 
 
     }
+  }
 
   tempsDynamique(tache,i){
     return (this.compteur[i])?tache.temps+this.compteur[i]:tache.temps;

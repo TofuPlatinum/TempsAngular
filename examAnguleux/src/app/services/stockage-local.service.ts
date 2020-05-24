@@ -60,7 +60,7 @@ export class StockageLocalService {
 
   updateTache(tache:Tache){
     try{
-      localStorage.taches.removeItem(tache.id);
+      localStorage.taches.removeItem(tache.id); //marche pas ?
       this.taches.push(tache);
       localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
