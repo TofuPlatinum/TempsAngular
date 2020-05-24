@@ -58,7 +58,7 @@ export class StockageLocalService {
 
   }
 
-  updateTache(tache:Tache){
+  supprimerTache(tache:Tache){
     try{
       localStorage.taches.removeItem(tache.id); //marche pas ?
       this.taches.push(tache);
