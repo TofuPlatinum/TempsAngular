@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { StockageLocalService } from '../services/stockage-local.service';
 import { interval, Subscription } from 'rxjs';
 import { Tache } from '../model/tache';
@@ -9,6 +9,8 @@ import { Tache } from '../model/tache';
   styleUrls: ['./chrono-tache.component.scss']
 })
 export class ChronoTacheComponent implements OnInit {
+
+  @Input() tache:Tache;
 
   taches: Tache[];
   idTache: number;
@@ -54,6 +56,7 @@ export class ChronoTacheComponent implements OnInit {
     if(tache.estDemarre){
       this.subsTemps[indice] = interval(1000).subscribe((valeur:number)=>{this.compteur[indice] = valeur});
       this.dateActive[indice] = new Date();
+
     }else{
       tache.temps = tache.temps + this.compteur[indice];
       this.compteur[indice] = 0;
@@ -70,7 +73,8 @@ export class ChronoTacheComponent implements OnInit {
     }
   }
 
-  tempsDynamique(tache,i){
+  tempsDynamique(tache){
+    let i = this.taches.indexOf(tache);
     return (this.compteur[i])?tache.temps+this.compteur[i]:tache.temps;
   }
 

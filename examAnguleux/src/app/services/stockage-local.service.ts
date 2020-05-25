@@ -38,13 +38,28 @@ export class StockageLocalService {
   }
   supprimerProjet(id: number){
     try{
+
       this.projets = this.recupererProjets();
+      this.taches = this.recupererTaches();
       for(var i=0; i <= this.projets.length-1 ; i++){
           if(this.projets[i].id== id){
             this.projets.splice(i,1);
           }
         }
+        var i = 0;
+        var taille = this.taches.length-1;
+        while(i <= taille){
+          if(this.taches[i].idProjet== id){
+            this.taches.splice(i,1);
+            i--;
+            taille--;
+          }else{
+            i++;
+          }
+
+        }
       localStorage.projets = JSON.stringify(this.projets);
+      localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);
     }
@@ -67,9 +82,9 @@ export class StockageLocalService {
   stockerTache(tache:Tache){
     try{
       this.taches = this.recupererTaches();
+
       this.taches.push(tache);
       this.taches.sort((a,b)=> (a.id > b.id )? 1:-1);
-
       localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);

@@ -1,22 +1,14 @@
-<div class="container">
-  <div class="jumborton">
-    <h1>Taches</h1>
 
-    </div>
 
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Tâche" #titreTache>
-      <div class="input-group-addon" (click)="ajouterTache(titreTache)">
-        <i class="fa fa-plus-circle"></i>
-      </div>
-    </div>
+<div class=container>
 
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let tache of taches ; let i = index">
-            <span (click)="demarrerStopperTache(tache)">
-              <i class="fa fa-lg" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
-              </span>
-              {{tache.titre}} {{tempsDynamique(tache,i)}}
-            </li>
-          </ul>
-        </div>
+  <div class="row">
+  <span (click)="demarrerStopperTache(tache)">
+    <i class="fa fa-lg" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
+  </span>
+  </div>
+  <div>
+  {{tache.titre}} {{tempsDynamique(tache)}}
+  <div>
+
+</div>

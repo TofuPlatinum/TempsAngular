@@ -17,10 +17,9 @@
 
 
 <div class="container">
-  <ul class="list-group">
-        <li class="list-group-item" *ngFor="let tache of taches">
-          <p>{{tache.titre}}</p>
-          </li>
-          </ul>
+
+
+        <app-chrono-tache *ngFor="let tache of taches" [tache]="tache"></app-chrono-tache>
+
 
   </div>
