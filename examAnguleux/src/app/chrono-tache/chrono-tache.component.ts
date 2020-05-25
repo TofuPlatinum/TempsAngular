@@ -78,4 +78,13 @@ export class ChronoTacheComponent implements OnInit {
     return (this.compteur[i])?tache.temps+this.compteur[i]:tache.temps;
   }
 
+  supprimerTache(id){
+    for(var i=0; i <= this.taches.length-1 ; i++){
+        if(this.taches[i].id == id){
+          this.taches.splice(i,1);
+        }
+      }
+      this.stockageLocalService.supprimerTache(id);
+  }
+
 }

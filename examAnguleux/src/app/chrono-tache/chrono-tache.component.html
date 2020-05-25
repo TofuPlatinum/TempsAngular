@@ -3,12 +3,17 @@
 <div class=container>
 
   <div class="row">
-  <span (click)="demarrerStopperTache(tache)">
-    <i class="fa fa-lg" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
-  </span>
-  </div>
+    <div class="col">
+      {{tache.titre}} {{tempsDynamique(tache)}}
+    </div>
+    <div class="col col-lg-4">
+        <i class="fa fa-lg col-lg-3" (click)="demarrerStopperTache(tache)" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
+        <i class="fa fa-trash col-lg-3" (click)="supprimerTache(tache.id)"></i>
+    </div>
+
+
   <div>
-  {{tache.titre}} {{tempsDynamique(tache)}}
+
   <div>
 
 </div>

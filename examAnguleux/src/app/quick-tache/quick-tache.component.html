@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="container">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Tache Rapide" #titretache>
+
+      <div class="input-group-append" (click)="ajouterQuickTache(titretache)">
+          <span class="input-group-text"><i class="fa fa-plus-circle"></i></span>
+      </div>
+    </div>
+  </div>
+
+
+    <div class=container>
+        <app-chrono-tache *ngFor="let tache of taches" [tache]="tache"></app-chrono-tache>
+        </div>
+  </div>

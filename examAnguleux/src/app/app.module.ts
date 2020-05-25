@@ -10,6 +10,7 @@ import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { ProjetService } from './services/projet-service';
 import { ChronoTacheComponent } from './chrono-tache/chrono-tache.component';
+import { QuickTacheComponent } from './quick-tache/quick-tache.component';
 
 const appRoutes: Routes = [
   { path: 'projet/:id', component: ProjetComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     MenuComponent,
     ProjetComponent,
-    ChronoTacheComponent
+    ChronoTacheComponent,
+    QuickTacheComponent
   ],
   imports: [
     BrowserModule,
