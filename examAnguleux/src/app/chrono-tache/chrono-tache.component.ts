@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { StockageLocalService } from '../services/stockage-local.service';
 import { interval, Subscription } from 'rxjs';
 import { Tache } from '../model/tache';
+import { Projet } from '../model/projet';
 
 @Component({
   selector: 'app-chrono-tache',
@@ -13,16 +14,21 @@ export class ChronoTacheComponent implements OnInit {
   @Input() tache:Tache;
 
   taches: Tache[];
+  projets: Projet[];
   idTache: number;
   compteur: number[];
   dateActive: Date[];
   subsTemps : Subscription[] = [];
+
+  selectedProjetId: number;
+  isChangerProjet: boolean;
 
 
   constructor(private stockageLocalService: StockageLocalService) { }
 
   ngOnInit(): void {
     this.taches = this.stockageLocalService.recupererTaches();
+    this.projets = this.stockageLocalService.recupererProjets();
     this.idTache = this.taches.length-1;
     this.taches.forEach(element => {
       this.subsTemps.push(new Subscription);
@@ -33,19 +39,22 @@ export class ChronoTacheComponent implements OnInit {
   }
 
   ajouterTache(titreTache){
-    let nouvelleTache = {
-      id : this.idTache+1,
-      titre : titreTache.value,
-      estDemarre : false,
-      temps : 0,
-      dates: [],
-      idProjet: 1
+    if(titreTache.value.length > 1){
+      let nouvelleTache = {
+        id : this.idTache+1,
+        titre : titreTache.value,
+        estDemarre : false,
+        temps : 0,
+        dates: [],
+        idProjet: 1,
+      }
+
+      this.taches.push(nouvelleTache)
+      this.stockageLocalService.stockerTache(nouvelleTache);
+      titreTache.value = '';
+      this.idTache++;
     }
 
-    this.taches.push(nouvelleTache)
-    this.stockageLocalService.stockerTache(nouvelleTache);
-    titreTache.value = '';
-    this.idTache++;
 
   }
 
@@ -87,6 +96,27 @@ export class ChronoTacheComponent implements OnInit {
         }
       }
       this.stockageLocalService.supprimerTache(id);
+      location.reload();
+  }
+  editChangerProjet(){
+    this.isChangerProjet = !this.isChangerProjet;
+  }
+  changerProjet(){
+    if(this.selectedProjetId != 0 || this.selectedProjetId != null){
+      for(var i=0; i <= this.taches.length-1 ; i++){
+          if(this.taches[i].id == this.idTache){
+            this.stockageLocalService.supprimerTache(this.idTache);
+            let newTache : Tache = this.taches[i];
+            this.taches.splice(i,1);
+            newTache.idProjet = this.selectedProjetId;
+            this.taches.push(newTache)
+            this.stockageLocalService.stockerTache(newTache);
+            location.reload();
+
+          }
+        }
+
+    }
   }
 
 }

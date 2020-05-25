@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.projets = this.stockageLocalService.recupererProjets();
+    this.idProjet = this.stockageLocalService.recupererIdProjet();
     if(this.projets.length == 0){
       this.projets = [
         {
@@ -33,7 +34,6 @@ export class MenuComponent implements OnInit {
       this.stockageLocalService.stockerProjet(this.projets[0]);
       this.stockageLocalService.stockerProjet(this.projets[1]);
     }
-    this.idProjet = this.projets.length;
     this.taches = this.stockageLocalService.recupererTaches();
     let tempsTotal: number = 0;
     for(var i=0; i <= this.taches.length-1 ; i++){
@@ -49,7 +49,6 @@ export class MenuComponent implements OnInit {
   }
 
   ajouterProjet(titreProjet){
-    console.log(titreProjet.value.length);
     if(titreProjet.value.length > 1){
       let newProjet = {
         id: this.idProjet,
@@ -59,6 +58,7 @@ export class MenuComponent implements OnInit {
       this.idProjet++;
       this.projets.push(newProjet);
       this.stockageLocalService.stockerProjet(newProjet);
+      this.stockageLocalService.stockerIdProjet(this.idProjet);
       titreProjet.value = '';
     }
 

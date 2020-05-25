@@ -13,6 +13,8 @@ export class StockageLocalService {
 
   taches: Tache[];
 
+  idProjet: number;
+
 
   recupererProjets(){
     try{
@@ -101,6 +103,31 @@ export class StockageLocalService {
           }
         }
       localStorage.taches = JSON.stringify(this.taches);
+    }catch(error){
+      console.error("Impossible de persister dans localStorage", error);
+    }
+
+  }
+  recupererIdProjet(){
+    try{
+      if(localStorage.idProjet != null){
+
+        return JSON.parse(localStorage.idProjet);
+      }else{
+        return 2;
+      }
+    }catch(error){
+      console.error("Impossible de recuperer le localStorage", error);
+      return null;
+    }
+  }
+
+  stockerIdProjet(id:number){
+    try{
+      this.idProjet = this.recupererIdProjet();
+
+      this.idProjet = id;
+      localStorage.idProjet = JSON.stringify(id);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);
     }

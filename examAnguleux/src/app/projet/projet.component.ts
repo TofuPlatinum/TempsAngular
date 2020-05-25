@@ -24,19 +24,33 @@ export class ProjetComponent implements OnInit {
     let toutestaches: Tache[] = this.stockageLocalService.recupererTaches();
     this.idTache = toutestaches.length-1;
     let found: boolean = false;
-    for(let elem of projets){
-      if(elem.id == id){
-        this.projet = elem;
+
+    for(let projet of projets){
+      if(projet.id == id){
+        this.projet = projet;
         found = true;
       }
 
     }
     this.taches = [];
-    toutestaches.forEach(task => {
-      if(task.idProjet == id){
-        this.taches.push(task);
+    if( id == 0){
+      this.taches = toutestaches;
+    }else{
+      if( id == 1){
+        toutestaches.forEach(task => {
+          if(task.idProjet == id || task.idProjet == -1){
+            this.taches.push(task);
+          }
+        });
+      }else{
+        toutestaches.forEach(task => {
+          if(task.idProjet == id){
+            this.taches.push(task);
+          }
+        });
       }
-    });
+    }
+
 
   }
 

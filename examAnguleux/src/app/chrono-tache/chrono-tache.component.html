@@ -7,8 +7,20 @@
       {{tache.titre}} {{tempsDynamique(tache)}}
     </div>
     <div class="col col-lg-4">
-        <i class="fa fa-lg col-lg-3" (click)="demarrerStopperTache(tache)" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
-        <i class="fa fa-trash col-lg-3" (click)="supprimerTache(tache.id)"></i>
+        <i class="fa fa-lg col-lg-2" (click)="demarrerStopperTache(tache)" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>
+        <i class="fa fa-trash col-lg-2" (click)="supprimerTache(tache.id)"></i>
+        <i class="fa fa-th-list col-lg-2" (click)="editChangerProjet()"></i>
+
+        <span *ngIf="isChangerProjet" class="input-group">
+          <select matNativeControl [(ngModel)]="selectedProjetId" name="projet">
+            <option value="" selected></option>
+            <option *ngFor="let projet of projets" [value]="projet.id">
+              {{projet.titre}}
+            </option>
+          </select>
+          <span class="input-group-text"><i class="fa fa-check" (click)="changerProjet()"></i></span>
+        </span>
+
     </div>
 
 
