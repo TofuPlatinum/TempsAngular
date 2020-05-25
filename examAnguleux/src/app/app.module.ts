@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { ProjetService } from './services/projet-service';
 import { ChronoTacheComponent } from './chrono-tache/chrono-tache.component';
 import { QuickTacheComponent } from './quick-tache/quick-tache.component';
+import { FormsModule } from '@angular/forms';
+import{  MatFormFieldModule } from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   { path: 'projet/:id', component: ProjetComponent },
@@ -29,8 +31,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    MatFormFieldModule
   ],
   providers: [
     ProjetService
