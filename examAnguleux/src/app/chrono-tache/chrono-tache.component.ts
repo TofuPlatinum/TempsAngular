@@ -47,6 +47,7 @@ export class ChronoTacheComponent implements OnInit {
 
   }
 
+
   demarrerStopperTache(tache:Tache){
     tache.estDemarre = ! tache.estDemarre
     let indice = this.taches.indexOf(tache);

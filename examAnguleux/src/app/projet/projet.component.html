@@ -1,1 +1,26 @@
-<p>{{ projet.titre }}</p>
+
+<p>{{projet.titre}}</p>
+
+
+<div class=container>
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Tâche" #titreTache>
+  <div class="input-group-append" (click)="ajouterTache(titreTache,projet.id)">
+    <i class="fa fa-plus-circle"></i>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+<div class="container">
+  <ul class="list-group">
+        <li class="list-group-item" *ngFor="let tache of taches">
+          <p>{{tache.titre}}</p>
+          </li>
+          </ul>
+
+  </div>

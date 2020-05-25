@@ -69,6 +69,7 @@ export class StockageLocalService {
       this.taches = this.recupererTaches();
       this.taches.push(tache);
       this.taches.sort((a,b)=> (a.id > b.id )? 1:-1);
+
       localStorage.taches = JSON.stringify(this.taches);
     }catch(error){
       console.error("Impossible de persister dans localStorage", error);
