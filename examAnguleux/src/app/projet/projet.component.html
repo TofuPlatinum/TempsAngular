@@ -1,21 +1,16 @@
 
-<p>{{projet.titre}}</p>
 
 
 <div class=container>
+  <h1>{{projet.titre}}</h1>
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Tâche" #titreTache>
   <div class="input-group-append" (click)="ajouterTache(titreTache,projet.id)">
-    <i class="fa fa-plus-circle"></i>
+    <span class="input-group-text"><i class="fa fa-plus-circle"></i></span>
   </div>
 </div>
 
 </div>
-
-
-
-
-
 <div class="container">
 
 

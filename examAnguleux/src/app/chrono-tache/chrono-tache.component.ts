@@ -33,19 +33,22 @@ export class ChronoTacheComponent implements OnInit {
   }
 
   ajouterTache(titreTache){
-    let nouvelleTache = {
-      id : this.idTache+1,
-      titre : titreTache.value,
-      estDemarre : false,
-      temps : 0,
-      dates: [],
-      idProjet: 1
+    if(titreTache.value.length > 1){
+      let nouvelleTache = {
+        id : this.idTache+1,
+        titre : titreTache.value,
+        estDemarre : false,
+        temps : 0,
+        dates: [],
+        idProjet: 1
+      }
+
+      this.taches.push(nouvelleTache)
+      this.stockageLocalService.stockerTache(nouvelleTache);
+      titreTache.value = '';
+      this.idTache++;
     }
 
-    this.taches.push(nouvelleTache)
-    this.stockageLocalService.stockerTache(nouvelleTache);
-    titreTache.value = '';
-    this.idTache++;
 
   }
 

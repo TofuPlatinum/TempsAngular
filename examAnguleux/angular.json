@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "examAnguleux"
+    }
+  },
+  "defaultProject": "examAnguleux",
+  "cli": {
+    "analytics": false
+  }
 }
