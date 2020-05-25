@@ -58,7 +58,9 @@ export class ChronoTacheComponent implements OnInit {
       this.dateActive[indice] = new Date();
 
     }else{
+
       tache.temps = tache.temps + this.compteur[indice];
+
       this.compteur[indice] = 0;
       this.subsTemps[indice].unsubscribe();
       let maintenant = new Date();
