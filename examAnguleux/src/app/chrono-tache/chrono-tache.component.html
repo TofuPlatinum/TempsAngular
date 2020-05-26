@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="col">
-      {{tache.titre}} {{tempsDynamique(tache)}}
+      {{tache.titre}} {{tempsH(tempsDynamique(tache))}} : {{tempsM(tempsDynamique(tache))}} : {{tempsDynamique(tache)%60}}
     </div>
     <div class="col col-lg-4">
         <i class="fa fa-lg col-lg-2" (click)="demarrerStopperTache(tache)" [ngClass]="tache.estDemarre ? 'fa-pause-circle-o': 'fa-play-circle-o'"></i>

@@ -86,7 +86,21 @@ export class ChronoTacheComponent implements OnInit {
 
   tempsDynamique(tache){
     let i = this.taches.indexOf(tache);
-    return (this.compteur[i])?tache.temps+this.compteur[i]:tache.temps;
+    return (this.compteur[i])%60?tache.temps+this.compteur[i]:tache.temps;
+  }
+
+  tempsM(temps){
+    let tempsM = 0;
+    tempsM = Math.floor(temps/60);
+    tempsM = tempsM%60;
+    return tempsM;
+  }
+
+  tempsH(temps){
+    let tempsH = 0;
+    tempsH = Math.floor(temps/3600);
+    tempsH = tempsH%3600;
+    return tempsH;
   }
 
   supprimerTache(id){
@@ -98,9 +112,11 @@ export class ChronoTacheComponent implements OnInit {
       this.stockageLocalService.supprimerTache(id);
       location.reload();
   }
+
   editChangerProjet(){
     this.isChangerProjet = !this.isChangerProjet;
   }
+
   changerProjet(){
     if(this.selectedProjetId != 0 || this.selectedProjetId != null){
       for(var i=0; i <= this.taches.length-1 ; i++){
