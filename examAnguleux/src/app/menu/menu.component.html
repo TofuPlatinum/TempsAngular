@@ -1,3 +1,4 @@
+<br>
 <div class="container">
     <div>
       <h1>MENU</h1>
@@ -27,8 +28,8 @@
                   <a routerLink="projet/{{projet.id}}">{{ projet.titre }}</a>
                 </div>
                 <div class="col col-lg-4">
-                  <i class="fa fa-trash col-lg-3" (click)="supprimerProjet(projet.id)"></i>
-                  <i class="fa fa-edit col-lg-3" (click)="editerTrue(projet.id)"></i>
+                  <i *ngIf="projet.isNotProjetPrincipal" class="fa fa-trash col-lg-3" (click)="supprimerProjet(projet.id)"></i>
+                  <i *ngIf="projet.isNotProjetPrincipal" class="fa fa-edit col-lg-3" (click)="editerTrue(projet.id)"></i>
                   <span *ngIf="projet.isEdit" class="input-group">
                     <input type="text"  class="form-control" placeholder="Nouveau titre" #titreProjetEdit>
                     <div class="input-group-append" (click)="editerProjet(projet.id,titreProjetEdit)">

@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
   tempsTotalsec : number;
   tempsTotalmin : number;
   tempsTotalh : number;
+  isNotProjetPrincipal : boolean;
 
 
   constructor( private stockageLocalService : StockageLocalService) { }
@@ -25,10 +26,10 @@ export class MenuComponent implements OnInit {
     if(this.projets.length == 0){
       this.projets = [
         {
-          id: 0, titre : "Toutes les tâches", isEdit : false
+          id: 0, titre : "Toutes les tâches", isEdit : false, isNotProjetPrincipal : false
         },
         {
-          id: 1, titre : "Tâches unique", isEdit : false
+          id: 1, titre : "Tâches unique", isEdit : false, isNotProjetPrincipal : false
         }
       ]
       this.stockageLocalService.stockerProjet(this.projets[0]);
@@ -53,7 +54,8 @@ export class MenuComponent implements OnInit {
       let newProjet = {
         id: this.idProjet,
         titre: titreProjet.value,
-        isEdit: false
+        isEdit: false,
+        isNotProjetPrincipal : true
       }
       this.idProjet++;
       this.projets.push(newProjet);
